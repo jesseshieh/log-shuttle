@@ -38,6 +38,9 @@ docker: ldflags ver clean-docker-build
 	docker build -t heroku/log-shuttle:${VERSION} ./
 	${MAKE} clean-docker-build
 
+build: ldflags
+	${GO_BUILD_ENV} go build -v -o .docker_build/log-shuttle ${LDFLAGS} ./cmd/log-shuttle
+
 clean-docker-build:
 	rm -rf .docker_build
 
